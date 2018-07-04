@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Get Networks
+    dna_networks:
+      dna_url: '{{ dnaurl }}'
+      dna_username: '{{ dnauser }}'
+      dna_password: '{{ dnapass }}'
+      validate_certs: False
+      api_endpoint: '/l3/ospf'
+    register: networkdevice_facts
+
+  - debug:
+      var: networkdevice_facts

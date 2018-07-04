@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Get interfaces info
+    dna_networks_interfaces:
+      dna_url: '{{ dnaurl }}'
+      dna_username: '{{ dnauser }}'
+      dna_password: '{{ dnapass }}'
+      validate_certs: False
+      api_endpoint: '/19bf3195-6715-4317-b51d-9cc3e2eb296f'
+    register: networkdevice_facts
+
+  - debug:
+      var: networkdevice_facts

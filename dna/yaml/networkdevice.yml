@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Get NetworkDevices
+    dna_networkdevice:
+      dna_url: '{{ dnaurl }}'
+      dna_username: '{{ dnauser }}'
+      dna_password: '{{ dnapass }}'
+      validate_certs: False
+    register: networkdevice_facts
+
+  - debug:
+      var: networkdevice_facts
