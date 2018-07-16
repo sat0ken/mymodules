@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: bm280から温度・気圧・湿度を取得するお
+    raspberrypi_bme280:
+      bus: 1
+      i2c_addr: 0x76
+    register: bme280_facts
+
+  - debug:
+      var: bme280_facts

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: 扇風機をつけるお
+    raspberrypi_senpuuki:
+      power_state: on
+    register: result
+
+  - debug:
+      var: result

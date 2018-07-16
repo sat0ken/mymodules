@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Lチカ
+    raspberrypi_gpio:
+      setup: "OUT"
+      pin: 18
+      count: 5
