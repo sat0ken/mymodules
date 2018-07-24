@@ -14,15 +14,18 @@ def main():
 
     module = AnsibleModule(
         argument_spec=dict(
-            power_state=dict(type='str', required=True),
+            power_state=dict(type='str', required=True)
         )
     )
 
     power = module.params['power_state']
-    rtn = ""
 
-    if power == "ON":
+    if power == "on":
         cmd = "irsend SEND_ONCE senpuuki on"
+    elif power == "up":
+        cmd = "irsend SEND_ONCE senpuuki up"
+    elif power == "on-up":
+        cmd = "irsend SEND_ONCE senpuuki on && irsend SEND_ONCE senpuuki up"
     else:
         cmd = "irsend SEND_ONCE senpuuki off"
 
