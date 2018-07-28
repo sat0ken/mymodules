@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Send message to discord
+    discord_send_message:
+      token: "xxxxxxxxxxxx"
+      channel_id: "xxxxxxxxxxxx"
+      msg: "テストだお"
+    register: facts
+
+  - debug:
+          var: facts
