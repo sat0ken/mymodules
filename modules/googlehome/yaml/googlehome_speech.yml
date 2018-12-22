@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: command
+    command: hostname
+    register: result
+
+  - name: Google home speech
+    googlehome_speech:
+      device_name: "1号機"
+      mp3_server: "http://xxx.xxx.xxx.xxx/mp3"
+      mp3_folder: "/xxx/mp3"
+      mp3_file: "output.mp3"
+      texttospeech: "おめでとうPlaybookが成功したよ"
+    when: result is succeeded

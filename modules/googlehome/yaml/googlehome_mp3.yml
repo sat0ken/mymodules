@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Google home mp3
+    googlehome_mp3:
+      device_name: "1号機"
+      mp3: "https://xxx.xxx.xxx.xxx/xxx/xxx.mp3"
+    register: result
+
+  - debug:
+      var: result
